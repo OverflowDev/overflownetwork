@@ -1,25 +1,44 @@
-import logo from './logo.svg';
-import './App.css';
+import './index.css'
+import dayjs from 'dayjs';
+import { useEffect } from 'react';
+
+import Countdown from './countdown/components/Countdown'
+import Darkmode from './darkmode/Darkmode';
+import Portfolio from './portfolio/components/Portfolio';
+import Overflow from './portfolio/components/Overflow';
+import Footer from './countdown/layouts/Footer';
+
 
 function App() {
+
+    // *1000 means convert to milliseconds 
+    const launchTimestamp = dayjs(1660343100 * 1000)
+    const currentDayJs = dayjs()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='bg-teal-50 dark:bg-veryDarkBlue h-screen'>
+      <Darkmode />
+      <Countdown launchTimestamp={launchTimestamp} />
+      {/* <Portfolio /> */}
+
     </div>
   );
+    
+  //   if (!launchTimestamp.isBefore(currentDayJs)) {
+
+  //   return (
+  //     <div className="h-screen">
+  //       <Countdown launchTimestamp={launchTimestamp} />
+  //     </div>
+  //   )
+
+  // } else {
+  //   return (
+  //     <div className=''>
+  //       <Portfolio />
+  //     </div>
+  //   )
+  // }
 }
 
 export default App;
